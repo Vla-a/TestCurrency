@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TestCurrency</string>
+    <string name="id">id</string>
+    <string name="name">Name</string>
+    <string name="CharCode">CharCode</string>
+    <string name="Rate">Rate</string>
+    <string name="Num">Num</string>
+    <string name="Scale">Scale</string>
+    <string name="created">Characters</string>
+    <string name="NumCod">NumCod</string>
+    <string name="Name_of_currencies">Name of currencies</string>
+    <string name="No_currency">No_currency</string>
+    <string name="log_in">Log In</string>
+    <string name="enter_user_name">Enter user name</string>
+    <string name="enter_password">Enter password</string>
+    <string name="confirm">Confirm</string>
+    <string name="no_value">NO VALUES</string>
+</resources>
