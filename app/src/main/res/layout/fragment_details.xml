@@ -1,88 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/blue"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/btn_return"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/durk_blue"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_baseline_west_24"
+        app:title="@string/Currency_details"
+        app:titleTextColor="@color/black">
+
+    </androidx.appcompat.widget.Toolbar>
+
     <TextView
         android:id="@+id/tv_charCod"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="28sp"
+        android:textStyle="italic"
+        android:paddingStart="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_scale"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_numCod" />
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="28sp"
+        android:textStyle="italic"
+        android:paddingStart="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_num"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_return" />
 
     <TextView
-        android:id="@+id/tv_id"
-        android:layout_width="200dp"
+        android:id="@+id/tv_num"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:padding="24dp"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="28sp"
+        android:textStyle="italic"
+        android:paddingStart="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_numCod"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
         android:id="@+id/tv_numCod"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="28sp"
+        android:textStyle="italic"
+        android:paddingStart="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_charCod"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_id" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_num" />
 
     <TextView
         android:id="@+id/tv_scale"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="28sp"
+        android:textStyle="italic"
+        android:paddingStart="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_rate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_charCod" />
 
     <TextView
         android:id="@+id/tv_rate"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="28sp"
+        android:textStyle="italic"
+        android:paddingStart="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_scale" />
-
-    <TextView
-        android:id="@+id/tv_num"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_rate" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_return"
-        android:layout_width="66dp"
-        android:layout_height="46dp"
-        android:layout_margin="8dp"
-        app:icon="@drawable/ic_baseline_west_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_scale"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

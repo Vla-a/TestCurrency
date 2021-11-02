@@ -17,6 +17,8 @@ import com.example.testcurrency.ui.MainFragment.Companion.KEY5
 import com.example.testcurrency.ui.MainFragment.Companion.KEY6
 import com.example.testcurrency.ui.MainFragment.Companion.KEY7
 import com.example.testcurrency.ui.MainFragment.Companion.TEST
+import java.text.SimpleDateFormat
+import java.util.*
 
 class FragmentDetails : Fragment() {
     private var binding: FragmentDetailsBinding? = null
@@ -33,25 +35,20 @@ class FragmentDetails : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+val date = SimpleDateFormat("dd.MM.yyyy", Locale.ROOT).format(System.currentTimeMillis())
         setFragmentResultListener(TEST) { key, bundle ->
 
             binding!!.tvNum.text =
-                "${resources.getString(R.string.Num)}: ${bundle.getString(KEY2)}"
+                "${resources.getString(R.string.id)}: ${bundle.getString(KEY5)}"
 
             binding!!.name.text =
                 "${resources.getString(R.string.name)}: ${bundle.getString(KEY3)}"
 
-
             binding!!.tvCharCod.text =
-                "${resources.getString(R.string.CharCode)}: ${bundle.getString(KEY1)}"
+                "${resources.getString(R.string.Abbreviation)}: ${bundle.getString(KEY1)}"
 
             binding!!.tvNumCod.text =
-                "${resources.getString(R.string.NumCod)}: ${bundle.getString(KEY4)}"
-
-
-            binding!!.tvId.text =
-                "${resources.getString(R.string.id)}: ${bundle.getString(KEY5)}"
+                "${resources.getString(R.string.Date)}: ${date}"
 
             binding!!.tvRate.text =
                 "${resources.getString(R.string.Rate)}: ${bundle.getString(KEY6)}"

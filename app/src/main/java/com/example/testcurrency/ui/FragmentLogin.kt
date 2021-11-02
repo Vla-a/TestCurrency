@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.testcurrency.databaseUser.UserEntity
 import com.example.testcurrency.databinding.FragmentLoginBinding
@@ -84,6 +85,10 @@ class FragmentLogin : Fragment() {
             binding!!.btnSubmit.visibility = View.INVISIBLE
             userViewModel.deleteUserBd(user)
             Toast.makeText(context, "Invalid password", Toast.LENGTH_SHORT).show()
+        }
+
+        binding!!.btnReturn.setOnClickListener {
+            activity?.finish()
         }
     }
 }

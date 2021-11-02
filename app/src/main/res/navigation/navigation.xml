@@ -5,7 +5,6 @@
     android:id="@+id/navigation"
     app:startDestination="@+id/loginFragment">
 
-
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.testcurrency.ui.FragmentLogin"
@@ -13,7 +12,11 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/toMainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -23,7 +26,11 @@
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/toFragmentDetails"
-            app:destination="@id/fragmentDetails" />
+            app:destination="@id/fragmentDetails"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -33,6 +40,4 @@
         tools:layout="@layout/fragment_details">
 
     </fragment>
-
-
 </navigation>

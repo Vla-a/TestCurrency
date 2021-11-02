@@ -68,7 +68,6 @@ class MainFragment : Fragment() {
         setFragmentResult(TEST, Bundle().apply {
             putString(KEY1, currency.charCode)
             putString(KEY3, currency.name)
-            putString(KEY4, currency.numCod)
             putString(KEY5, currency.id.toString())
             putString(KEY6, currency.rate.toString())
             putString(KEY7, currency.scale.toString())
@@ -111,6 +110,5 @@ class MainFragment : Fragment() {
         const val KEY5 = "KEY5"
         const val KEY6 = "KEY6"
         const val KEY7 = "KEY7"
-
     }
 }

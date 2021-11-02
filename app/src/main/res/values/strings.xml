@@ -2,12 +2,12 @@
     <string name="app_name">TestCurrency</string>
     <string name="id">id</string>
     <string name="name">Name</string>
-    <string name="CharCode">CharCode</string>
+    <string name="Abbreviation">Abbreviation</string>
     <string name="Rate">Rate</string>
     <string name="Num">Num</string>
     <string name="Scale">Scale</string>
     <string name="created">Characters</string>
-    <string name="NumCod">NumCod</string>
+    <string name="Date">Date</string>
     <string name="Name_of_currencies">Name of currencies</string>
     <string name="No_currency">No_currency</string>
     <string name="log_in">Log In</string>
@@ -16,5 +16,11 @@
     <string name="confirm">Confirm</string>
     <string name="no_value">NO VALUES</string>
     <string name="no_name_or_password">no name or password</string>
+    <string name="Currency_details">Currency details</string>
+    <string name="Authorization">Authorization</string>
+    <string name="LOG_IN">LOG IN</string>
+    <string name="SING_UP">SING UP</string>
+    <string name="RESET">RESET</string>
+    <string name="Log_in_to_the_system">Log in to the system</string>
 
 </resources>
