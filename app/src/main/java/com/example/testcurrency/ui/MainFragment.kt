@@ -2,10 +2,8 @@ package com.example.testcurrency.ui
 
 import android.content.Context
 import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,23 +12,22 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.characters.screen.MainViewModel
 import com.example.testcurrency.R
 import com.example.testcurrency.data.CurrencyAdapter
 import com.example.testcurrency.data.CurrencyResult
 import com.example.testcurrency.databinding.FragmentMainBinding
+import com.example.testcurrency.viewModel.MainViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class MainFragment : Fragment() {
 
-
     private val myViewModel: MainViewModel by viewModel()
     var binding: FragmentMainBinding? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,13 +51,14 @@ class MainFragment : Fragment() {
             Toast.makeText(context, R.string.No_currency, Toast.LENGTH_SHORT).show()
         }
 
-                        myViewModel.currencyLiveDataBd.observe(this.viewLifecycleOwner, Observer {
-                currencyAdapter.submitList(it)
-            })
+        myViewModel.currencyLiveDataBd.observe(this.viewLifecycleOwner, Observer {
+            currencyAdapter.submitList(it)
+        })
+
+        binding!!.btnReturn.setOnClickListener {
+            it.findNavController().popBackStack()
         }
-
-
-
+    }
 
     private fun clickListener(currency: CurrencyResult) {
         this.findNavController().navigate(MainFragmentDirections.toFragmentDetails())
@@ -76,7 +74,8 @@ class MainFragment : Fragment() {
     }
 
     fun isOnline(context: Context): Boolean {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = connectivityManager.activeNetworkInfo
         return networkInfo != null && networkInfo.isConnected
     }
@@ -92,5 +91,4 @@ class MainFragment : Fragment() {
         const val KEY7 = "KEY7"
 
     }
-
 }

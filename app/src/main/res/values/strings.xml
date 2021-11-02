@@ -15,4 +15,6 @@
     <string name="enter_password">Enter password</string>
     <string name="confirm">Confirm</string>
     <string name="no_value">NO VALUES</string>
+    <string name="no_name_or_password">no name or password</string>
+
 </resources>

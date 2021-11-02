@@ -1,5 +1,6 @@
 package com.example.testcurrency.database
 
+
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -17,7 +18,7 @@ object DatabaseConstructor {
         Room.databaseBuilder(
             context,
             CurrencyDatabase::class.java,
-            "character_database"
+            "currency_database"
         ).build()
 
 }

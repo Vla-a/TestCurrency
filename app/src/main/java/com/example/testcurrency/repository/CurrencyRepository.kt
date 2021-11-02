@@ -1,14 +1,11 @@
-package com.example.currency.restApi
+package com.example.testcurrency.repository
 
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.example.testcurrency.database.CurrencyEntity
-import com.example.testcurrency.restApi.CurrencyApi
 import com.example.testcurrency.data.CurrencyResult
 import com.example.testcurrency.database.CurrencyDao
+import com.example.testcurrency.database.CurrencyEntity
+import com.example.testcurrency.restApi.CurrencyApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -22,6 +19,7 @@ class CurrencyRepository(
 ) {
 
     val toDay = SimpleDateFormat("yyyy-MM-dd", Locale.ROOT).format(System.currentTimeMillis())
+
     @RequiresApi(Build.VERSION_CODES.O)
 
 
@@ -29,28 +27,29 @@ class CurrencyRepository(
         currencyDao.addCyrrencyBd(
             withContext(Dispatchers.IO) {
                 currencyApi.getCharacterList().map {
-            CurrencyEntity(
-                it.id,
-                it.numCod,
-                it.charCode,
-                it.scale,
-                it.name,
-                it.rate
-            )
-        }
-    })
+                    CurrencyEntity(
+                        it.id,
+                        it.numCod,
+                        it.charCode,
+                        it.scale,
+                        it.name,
+                        it.rate
+                    )
+                }
+            })
     }
 
-     fun getCurrencyBd(): Flow<List<CurrencyResult>> =
-        currencyDao.getCurrencyListBd().map { characterEntity ->
-            characterEntity.map {
+    fun getCurrencyBd(): Flow<List<CurrencyResult>> =
+        currencyDao.getCurrencyListBd().map { currencyEntity ->
+            currencyEntity.map {
                 CurrencyResult(
                     it.id,
                     it.numCod,
                     it.charCode,
                     it.scale,
                     it.name,
-                    it.rate)
+                    it.rate
+                )
             }
         }
 

@@ -59,10 +59,9 @@ class FragmentDetails : Fragment() {
             binding!!.tvScale.text =
                 "${resources.getString(R.string.Scale)}: ${bundle.getString(KEY7)}"
 
-
             binding!!.btnReturn.setOnClickListener {
                 it.findNavController().popBackStack()
             }
         }
-}
+    }
 }
