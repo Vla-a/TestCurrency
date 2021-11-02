@@ -44,7 +44,15 @@
             android:textSize="4dp"
             android:visibility="invisible"
             android:textColor="@color/teal_200"
-            android:padding="30dp"
+            android:text="Login"/>
+
+        <TextView
+            android:id="@+id/tv_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="4dp"
+            android:visibility="invisible"
+            android:textColor="@color/teal_200"
             android:text="Login"/>
 
         <EditText
@@ -75,7 +83,7 @@
 
             <TextView
                 android:id="@+id/btn_reset"
-                android:text="@string/RESET"
+                android:text="@string/DELETE_USER"
                 android:textAllCaps="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

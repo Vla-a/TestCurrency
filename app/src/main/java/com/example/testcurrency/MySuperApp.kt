@@ -11,6 +11,7 @@ import com.example.testcurrency.databaseUser.UserDatabase
 import com.example.testcurrency.repository.CurrencyRepository
 import com.example.testcurrency.repository.UserRepository
 import com.example.testcurrency.restApi.CurrencyApi
+import com.example.testcurrency.viewModel.SharedViewModel
 import com.example.testcurrency.viewModel.UserViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -33,7 +34,7 @@ class MySuperApp : Application() {
     private val viewModels = module {
         viewModel { MainViewModel(get()) }
         viewModel { UserViewModel(get()) }
-
+        viewModel { SharedViewModel() }
     }
 
     private val repositoryModule = module { //создаем репозитории

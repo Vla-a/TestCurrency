@@ -20,7 +20,9 @@
     <string name="Authorization">Authorization</string>
     <string name="LOG_IN">LOG IN</string>
     <string name="SING_UP">SING UP</string>
-    <string name="RESET">RESET</string>
+    <string name="DELETE_USER">DELETE USER</string>
     <string name="Log_in_to_the_system">Log in to the system</string>
+    <string name="Invalid_password_or_name">Invalid password or name</string>
+    <string name="No_name_or_password">"No name or password"</string>
 
 </resources>

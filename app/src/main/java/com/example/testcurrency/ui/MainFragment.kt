@@ -12,8 +12,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,7 +23,9 @@ import com.example.testcurrency.data.CurrencyAdapter
 import com.example.testcurrency.data.CurrencyResult
 import com.example.testcurrency.databinding.FragmentMainBinding
 import com.example.testcurrency.viewModel.MainViewModel
+import com.example.testcurrency.viewModel.SharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.component.KoinApiExtension
 
 
 class MainFragment : Fragment() {
@@ -40,6 +42,7 @@ class MainFragment : Fragment() {
         return binding?.root
     }
 
+    @KoinApiExtension
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,6 +54,8 @@ class MainFragment : Fragment() {
 
         if (context?.let { isOnline(it) } == false) {
             Toast.makeText(context, R.string.No_currency, Toast.LENGTH_SHORT).show()
+        } else {
+            myViewModel.addCurrensy()
         }
 
         myViewModel.currencyLiveDataBd.observe(this.viewLifecycleOwner, Observer {
@@ -65,13 +70,9 @@ class MainFragment : Fragment() {
     private fun clickListener(currency: CurrencyResult) {
         this.findNavController().navigate(MainFragmentDirections.toFragmentDetails())
 
-        setFragmentResult(TEST, Bundle().apply {
-            putString(KEY1, currency.charCode)
-            putString(KEY3, currency.name)
-            putString(KEY5, currency.id.toString())
-            putString(KEY6, currency.rate.toString())
-            putString(KEY7, currency.scale.toString())
-        })
+        val model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+        model.sendMessage(currency)
+
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -99,16 +100,5 @@ class MainFragment : Fragment() {
             }
         }
         return false
-    }
-
-    companion object {
-        const val TEST = "TEST"
-        const val KEY1 = "KEY1"
-        const val KEY2 = "KEY2"
-        const val KEY3 = "KEY3"
-        const val KEY4 = "KEY4"
-        const val KEY5 = "KEY5"
-        const val KEY6 = "KEY6"
-        const val KEY7 = "KEY7"
     }
 }

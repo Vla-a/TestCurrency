@@ -20,9 +20,9 @@ class MainViewModel(
 
     val currencyLiveDataBd: LiveData<List<CurrencyResult>> = cRepository.getCurrencyBd().asLiveData()
 
-    init {
-        viewModelScope.launch(Dispatchers.IO) {
+    fun addCurrensy(){
 
+        viewModelScope.launch(Dispatchers.IO) {
             cRepository.addCurrency()
         }
     }

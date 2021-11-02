@@ -5,18 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.testcurrency.R
 import com.example.testcurrency.databinding.FragmentDetailsBinding
-import com.example.testcurrency.ui.MainFragment.Companion.KEY1
-import com.example.testcurrency.ui.MainFragment.Companion.KEY2
-import com.example.testcurrency.ui.MainFragment.Companion.KEY3
-import com.example.testcurrency.ui.MainFragment.Companion.KEY4
-import com.example.testcurrency.ui.MainFragment.Companion.KEY5
-import com.example.testcurrency.ui.MainFragment.Companion.KEY6
-import com.example.testcurrency.ui.MainFragment.Companion.KEY7
-import com.example.testcurrency.ui.MainFragment.Companion.TEST
+import com.example.testcurrency.viewModel.SharedViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -35,30 +28,23 @@ class FragmentDetails : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-val date = SimpleDateFormat("dd.MM.yyyy", Locale.ROOT).format(System.currentTimeMillis())
-        setFragmentResultListener(TEST) { key, bundle ->
+        val date = SimpleDateFormat("dd.MM.yyyy", Locale.ROOT).format(System.currentTimeMillis())
 
-            binding!!.tvNum.text =
-                "${resources.getString(R.string.id)}: ${bundle.getString(KEY5)}"
+        val model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+        // observing the change in the message declared in SharedViewModel
+        model.message.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
 
-            binding!!.name.text =
-                "${resources.getString(R.string.name)}: ${bundle.getString(KEY3)}"
-
+            binding!!.tvNum.text = "${resources.getString(R.string.id)}: ${it.id}"
+            binding!!.name.text = "${resources.getString(R.string.name)}: ${it.name}"
             binding!!.tvCharCod.text =
-                "${resources.getString(R.string.Abbreviation)}: ${bundle.getString(KEY1)}"
+                "${resources.getString(R.string.Abbreviation)}: ${it.charCode}"
+            binding!!.tvNumCod.text = "${resources.getString(R.string.Date)}: $date"
+            binding!!.tvRate.text = "${resources.getString(R.string.Rate)}: ${it.rate}"
+            binding!!.tvScale.text = "${resources.getString(R.string.Scale)}: ${it.scale}"
+        })
 
-            binding!!.tvNumCod.text =
-                "${resources.getString(R.string.Date)}: ${date}"
-
-            binding!!.tvRate.text =
-                "${resources.getString(R.string.Rate)}: ${bundle.getString(KEY6)}"
-
-            binding!!.tvScale.text =
-                "${resources.getString(R.string.Scale)}: ${bundle.getString(KEY7)}"
-
-            binding!!.btnReturn.setOnClickListener {
-                it.findNavController().popBackStack()
-            }
+        binding!!.btnReturn.setOnClickListener {
+            it.findNavController().popBackStack()
         }
     }
 }
